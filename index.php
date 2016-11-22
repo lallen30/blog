@@ -1,4 +1,10 @@
-
+<?php include 'config/config.php'; ?>
+<?php include 'libraries/Database.php'; ?>
+<?php // include 'includes/header.php'; ?>
+<?php
+    //Create DB Object
+    $db = new Database();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
