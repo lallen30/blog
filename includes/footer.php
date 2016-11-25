@@ -1,4 +1,4 @@
-
+        </div><!-- /.blog-main -->
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
@@ -53,5 +53,3 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
-
-        </div><!-- /.blog-main -->
