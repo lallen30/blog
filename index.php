@@ -3,11 +3,19 @@
     //Create DB Object
     $db = new Database();
 
-    //Create query
-    $query = "SELECT * FROM post";
+        //Create query
+        $query = "SELECT * FROM post";
 
-    //Run query
-    $posts = $db->select($query);
+        //Run query
+        $posts = $db->select($query);
+
+        //Create query
+        $query = "SELECT * FROM categories";
+
+        //Run query
+        $categories = $db->select($query);
+
+
  ?>
  <?php if($posts) : ?>
      <?php while($row = $posts->fetch_assoc()) : ?>

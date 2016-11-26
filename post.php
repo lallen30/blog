@@ -1,40 +1,30 @@
-<?php include 'config/config.php'; ?>
-<?php include 'libraries/Database.php'; ?>
 <?php include 'includes/header.php'; ?>
-<?php include 'helpers/format_helper.php'; ?>
 <?php
-    //Create DB Object
-    $db = new Database();
+	$id = $_GET['id'];
 
-    //Create query
-    $query = "SELECT * FROM post WHERE id = '".$_GET['id']."' LIMIT 1";
-//    $query = "SELECT * FROM post";
+	//Create DB Object
+	$db = new Database();
 
-    //Run query
-    $posts = $db->select($query);
- ?>
- <?php if($posts) : ?>
-     <?php while($row = $posts->fetch_assoc()) : ?>
+	//Create Query
+	$query = "SELECT * FROM post WHERE id = ".$id;
+	//Run Query
+	$post = $db->select($query)->fetch_assoc();
 
-
-          <div class="blog-post">
-            <h2 class="blog-post-title"><?php echo $row['title']; ?></h2>
-            <p class="blog-post-meta"><?php echo formatDate($row['date']); ?> <a href="#">
-                <?php
-                $aquery = "SELECT username FROM author WHERE id = '".$row['author_id']."' LIMIT 1";
-                $users = $db->select($aquery);
-                while($user = $users->fetch_assoc()) :
-                     echo $user['username'];
-                 endwhile;
-                 ?>
-             </a></p>
-            <?php echo shortenText($row['body']); ?>
-            <a class="readmore" href="post.php?=<?php echo $row['id']; ?>">Read More</a>
+	//Create Query
+	$query = "SELECT * FROM categories";
+	//Run Query
+	$categories = $db->select($query);
+?>
+<div class="blog-post">
+            <h2 class="blog-post-title"><?php echo $post['title']; ?></h2>
+            <p class="blog-post-meta"><?php echo formatDate($post['date']); ?> by <a href="#">
+		<?php
+			$aquery = "SELECT username FROM author WHERE id = '".$post['author_id']."' LIMIT 1";
+			$users = $db->select($aquery);
+			while($user = $users->fetch_assoc()) :
+				 echo $user['username'];
+			 endwhile;
+			 ?></a></p>
+				<?php echo $post['body']; ?>
           </div><!-- /.blog-post -->
-      <?php endwhile; ?>
-
-<?php else : ?>
-    <p> This post does not exist.</p>
-<?php endif; ?>
-
-        <?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
