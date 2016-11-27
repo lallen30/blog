@@ -4,7 +4,7 @@
     $db = new Database();
 
         //Create query
-        $query = "SELECT * FROM post";
+        $query = "SELECT * FROM post ORDER BY id DESC";
 
         //Run query
         $posts = $db->select($query);

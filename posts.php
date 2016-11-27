@@ -12,7 +12,7 @@
 		$posts = $db->select($query);
 	} else {
 		//Create Query
-		$query = "SELECT * FROM post";
+		$query = "SELECT * FROM post ORDER BY id DESC";
 		//Run Query
 		$posts = $db->select($query);
 	}
